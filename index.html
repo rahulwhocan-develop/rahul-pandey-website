@@ -11,72 +11,357 @@
 <link rel="canonical" href="https://example.com/">
 <meta property="og:type" content="website">
 <meta property="og:title" content="Rahul Pandey — Web Developer">
-<meta property="og:description" content="Websites that turn visitors into clients.">
+<meta property="og:description" content="Websites that turn visitors into clients. Business sites, landing pages, portfolios, e-commerce and AI-powered websites built by Rahul Pandey.">
 <meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22 fill=%22%23FFB454%22 font-family=%22monospace%22>&lt;/&gt;</text></svg>">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"ProfessionalService","name":"Rahul Pandey — Web Development","founder":{"@type":"Person","name":"Rahul Pandey","jobTitle":"Web Developer"},"areaServed":"Worldwide","priceRange":"Custom quote"}</script>
 <style>
-:root{--bg:#0B0D12;--bg-alt:#0E1117;--card:#12151D;--border:rgba(255,255,255,.09);--text:#ECEEF3;--text-body:#C7CCD9;--text-muted:#8992A6;--amber:#FFB454;--teal:#5EEAD4;--violet:#9D8CFF;--font-display:'Space Grotesk',sans-serif;--font-body:'Inter',sans-serif;--font-mono:'JetBrains Mono',monospace;}
-body{background:var(--bg);color:var(--text-body);font-family:var(--font-body);margin:0;}
-h1,h2,h3{font-family:var(--font-display);color:var(--text);}
-.container{max-width:1180px;margin:0 auto;padding:0 24px;}
-header{position:sticky;top:0;background:rgba(11,13,18,.85);padding:16px 0;z-index:100;}
-.nav-wrap{display:flex;justify-content:space-between;align-items:center;}
-.primary-nav a{color:var(--text-body);margin-left:24px;text-decoration:none;}
-.hero{padding:100px 0;}
-.hero h1{font-size:3rem;}
-.hero .hl{color:var(--amber);}
-.btn{display:inline-block;padding:14px 26px;border-radius:999px;font-weight:600;text-decoration:none;}
+:root{--bg:#0B0D12;--bg-alt:#0E1117;--card:#12151D;--card-hover:#161A24;--border:rgba(255,255,255,.09);--border-strong:rgba(255,255,255,.18);--text:#ECEEF3;--text-body:#C7CCD9;--text-muted:#8992A6;--amber:#FFB454;--amber-soft:rgba(255,180,84,.12);--teal:#5EEAD4;--teal-soft:rgba(94,234,212,.12);--violet:#9D8CFF;--radius:16px;--radius-sm:10px;--maxw:1180px;--font-display:'Space Grotesk',system-ui,sans-serif;--font-body:'Inter',system-ui,sans-serif;--font-mono:'JetBrains Mono',ui-monospace,monospace;--ease:cubic-bezier(.16,.8,.3,1);}
+*,*::before,*::after{box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+html,body{margin:0;padding:0;}
+body{background:var(--bg);color:var(--text-body);font-family:var(--font-body);font-size:16px;line-height:1.65;overflow-x:hidden;}
+img{max-width:100%;display:block;}
+a{color:inherit;text-decoration:none;}
+ul{list-style:none;margin:0;padding:0;}
+h1,h2,h3,h4{font-family:var(--font-display);color:var(--text);font-weight:600;line-height:1.15;margin:0;}
+p{margin:0;}
+.container{max-width:var(--maxw);margin:0 auto;padding:0 24px;}
+.skip-link{position:absolute;left:16px;top:-60px;background:var(--amber);color:#0B0D12;padding:10px 16px;border-radius:8px;font-weight:600;z-index:1000;transition:top .2s var(--ease);}
+.skip-link:focus{top:16px;}
+.eyebrow{font-family:var(--font-mono);font-size:.8rem;color:var(--teal);display:inline-flex;align-items:center;gap:8px;margin-bottom:14px;}
+.eyebrow::before{content:"//";color:var(--text-muted);}
+.section-head{max-width:640px;margin:0 0 56px;}
+.section-head h2{font-size:clamp(1.8rem,3.4vw,2.6rem);margin-bottom:14px;}
+.section-head p{color:var(--text-muted);font-size:1.05rem;}
+.section-pad{padding:110px 0;}
+@media(max-width:720px){.section-pad{padding:76px 0;}}
+.alt-bg{background:var(--bg-alt);border-top:1px solid var(--border);border-bottom:1px solid var(--border);}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;padding:14px 26px;border-radius:999px;font-weight:600;font-size:.95rem;border:1px solid transparent;cursor:pointer;transition:transform .25s var(--ease),box-shadow .25s var(--ease);white-space:nowrap;}
 .btn-primary{background:var(--amber);color:#1A1300;}
-.btn-ghost{border:1px solid var(--border);color:var(--text);}
-.section-pad{padding:100px 0;}
-.alt-bg{background:var(--bg-alt);}
-.card{background:var(--card);border:1px solid var(--border);border-radius:16px;padding:28px;}
+.btn-primary:hover{transform:translateY(-2px);box-shadow:0 12px 30px -10px rgba(255,180,84,.55);}
+.btn-ghost{background:transparent;color:var(--text);border-color:var(--border-strong);}
+.btn-ghost:hover{border-color:var(--amber);color:var(--amber);}
+.btn-block{width:100%;}
+header{position:sticky;top:0;z-index:100;background:rgba(11,13,18,.7);backdrop-filter:blur(14px);border-bottom:1px solid transparent;transition:border-color .3s;}
+header.scrolled{border-color:var(--border);}
+.nav-wrap{display:flex;align-items:center;justify-content:space-between;padding:16px 24px;max-width:var(--maxw);margin:0 auto;}
+.logo{font-family:var(--font-mono);font-weight:600;color:var(--text);display:flex;align-items:center;gap:8px;}
+.logo .tag{color:var(--amber);}
+nav.primary-nav{display:flex;align-items:center;gap:34px;}
+.primary-nav a{font-size:.92rem;color:var(--text-body);}
+.nav-actions{display:flex;align-items:center;gap:18px;}
+.nav-toggle{display:none;background:none;border:1px solid var(--border-strong);border-radius:8px;width:42px;height:42px;align-items:center;justify-content:center;color:var(--text);cursor:pointer;}
+@media(max-width:900px){nav.primary-nav{position:fixed;inset:66px 0 0 0;background:var(--bg);flex-direction:column;padding:36px 24px;gap:26px;transform:translateY(-12px);opacity:0;pointer-events:none;transition:opacity .25s,transform .25s;border-top:1px solid var(--border);}nav.primary-nav.open{opacity:1;transform:translateY(0);pointer-events:auto;}.primary-nav a{font-size:1.15rem;}.nav-actions .btn-ghost{display:none;}.nav-toggle{display:flex;}}
+.hero{padding:100px 0 90px;}
+.hero-grid{display:grid;grid-template-columns:1.05fr .95fr;gap:60px;align-items:center;}
+.hero-status{display:inline-flex;align-items:center;gap:8px;font-family:var(--font-mono);font-size:.8rem;color:var(--teal);background:var(--teal-soft);border:1px solid rgba(94,234,212,.25);padding:6px 14px;border-radius:999px;margin-bottom:24px;}
+.dot{width:7px;height:7px;border-radius:50%;background:var(--teal);}
+.hero h1{font-size:clamp(2.3rem,5.2vw,3.6rem);margin-bottom:22px;}
+.hero h1 .hl{color:var(--amber);}
+.hero-sub{font-size:1.1rem;color:var(--text-muted);max-width:520px;margin-bottom:34px;}
+.hero-ctas{display:flex;gap:16px;flex-wrap:wrap;margin-bottom:44px;}
+.stack-chips{display:flex;flex-wrap:wrap;gap:10px;}
+.chip{font-family:var(--font-mono);font-size:.78rem;color:var(--text-muted);border:1px solid var(--border);padding:6px 12px;border-radius:999px;}
+.terminal{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);overflow:hidden;}
+.terminal-bar{display:flex;align-items:center;gap:8px;padding:14px 16px;background:#0E1117;border-bottom:1px solid var(--border);}
+.terminal-bar span{width:11px;height:11px;border-radius:50%;}
+.terminal-title{margin-left:8px;font-family:var(--font-mono);font-size:.75rem;color:var(--text-muted);}
+.terminal-body{padding:24px;font-family:var(--font-mono);font-size:.87rem;line-height:1.85;min-height:280px;white-space:pre-wrap;}
+.terminal-body .prompt{color:var(--teal);}.terminal-body .key{color:var(--violet);}.terminal-body .str{color:var(--amber);}
+.caret{display:inline-block;width:8px;height:1.1em;background:var(--amber);}
+@media(max-width:980px){.hero-grid{grid-template-columns:1fr;}}
+.reveal{opacity:0;transform:translateY(22px);transition:opacity .7s var(--ease),transform .7s var(--ease);}
+.reveal.in{opacity:1;transform:translateY(0);}
+.about-grid{display:grid;grid-template-columns:.8fr 1.2fr;gap:64px;align-items:start;}
+.avatar-card{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);padding:32px;text-align:center;}
+.avatar{width:120px;height:120px;border-radius:50%;margin:0 auto 18px;display:flex;align-items:center;justify-content:center;font-family:var(--font-display);font-size:2.1rem;font-weight:700;color:#1A1300;background:linear-gradient(135deg,var(--amber),var(--teal));}
+.facts{margin-top:28px;display:grid;grid-template-columns:1fr 1fr;gap:16px;}
+.fact{border:1px solid var(--border);border-radius:var(--radius-sm);padding:16px 18px;background:var(--card);}
+.fact .label{font-family:var(--font-mono);font-size:.72rem;color:var(--text-muted);text-transform:uppercase;display:block;margin-bottom:6px;}
+@media(max-width:900px){.about-grid{grid-template-columns:1fr;}}
 .grid-3{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;}
 .grid-4{display:grid;grid-template-columns:repeat(4,1fr);gap:20px;}
-@media(max-width:900px){.grid-3,.grid-4{grid-template-columns:1fr 1fr;}}
-@media(max-width:600px){.grid-3,.grid-4{grid-template-columns:1fr;}}
-footer{border-top:1px solid var(--border);padding:56px 0;text-align:center;}
-.whatsapp-float{position:fixed;left:22px;bottom:22px;width:52px;height:52px;border-radius:50%;background:#25D366;display:flex;align-items:center;justify-content:center;}
+@media(max-width:980px){.grid-3,.grid-4{grid-template-columns:repeat(2,1fr);}}
+@media(max-width:620px){.grid-3,.grid-4{grid-template-columns:1fr;}}
+.card{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);padding:28px;transition:transform .3s,border-color .3s;}
+.card:hover{transform:translateY(-4px);border-color:var(--border-strong);}
+.icon-badge{width:46px;height:46px;border-radius:12px;display:flex;align-items:center;justify-content:center;margin-bottom:18px;background:var(--amber-soft);color:var(--amber);}
+.skill-group{margin-bottom:44px;}
+.skill-group h3{font-family:var(--font-mono);font-size:.85rem;color:var(--violet);text-transform:uppercase;margin-bottom:20px;}
+.service-card ul{margin:12px 0 20px;}
+.service-card li{font-size:.88rem;display:flex;gap:8px;margin-bottom:8px;}
+.service-link{color:var(--amber);font-weight:600;font-size:.88rem;}
+.project-thumb{height:170px;display:flex;align-items:center;justify-content:center;font-family:var(--font-display);font-weight:700;font-size:2rem;position:relative;}
+.project-thumb.p1{background:linear-gradient(135deg,#3A2E12,#1A1300 60%);}
+.project-thumb.p2{background:linear-gradient(135deg,#123A34,#0B1A18 60%);}
+.project-thumb.p3{background:linear-gradient(135deg,#241A3A,#140F1F 60%);}
+.badge-concept{position:absolute;top:14px;left:14px;font-family:var(--font-mono);font-size:.68rem;background:rgba(11,13,18,.7);border:1px solid var(--border-strong);color:var(--text-muted);padding:5px 10px;border-radius:999px;}
+.project-body{padding:24px;}
+.tag{font-family:var(--font-mono);font-size:.72rem;color:var(--teal);border:1px solid rgba(94,234,212,.25);background:var(--teal-soft);padding:4px 10px;border-radius:999px;margin-right:8px;}
+.why-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;}
+@media(max-width:980px){.why-grid{grid-template-columns:repeat(2,1fr);}}
+@media(max-width:620px){.why-grid{grid-template-columns:1fr;}}
+.process-item{display:grid;grid-template-columns:110px 1fr;gap:32px;padding:34px 0;border-bottom:1px solid var(--border);border-top:1px solid var(--border);margin-top:-1px;}
+.process-num{font-family:var(--font-mono);font-size:2.1rem;font-weight:600;color:transparent;-webkit-text-stroke:1.4px var(--border-strong);}
+@media(max-width:620px){.process-item{grid-template-columns:1fr;}}
+.faq-item{border-bottom:1px solid var(--border);border-top:1px solid var(--border);margin-top:-1px;}
+.faq-q{width:100%;background:none;border:none;color:var(--text);display:flex;align-items:center;justify-content:space-between;padding:22px 4px;text-align:left;font-family:var(--font-display);font-size:1.02rem;cursor:pointer;}
+.faq-q .plus{width:26px;height:26px;border:1px solid var(--border-strong);border-radius:50%;position:relative;flex-shrink:0;}
+.faq-a-wrap{display:grid;grid-template-rows:0fr;transition:grid-template-rows .3s;}
+.faq-item[data-open="true"] .faq-a-wrap{grid-template-rows:1fr;}
+.faq-a-inner{overflow:hidden;}
+.faq-a{padding:0 4px 22px;color:var(--text-muted);font-size:.95rem;}
+.contact-grid{display:grid;grid-template-columns:1.1fr .9fr;gap:48px;}
+.form-card{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);padding:32px;}
+.form-row{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin-bottom:18px;}
+.field{display:flex;flex-direction:column;gap:8px;margin-bottom:18px;}
+.field label{font-family:var(--font-mono);font-size:.78rem;color:var(--text-muted);text-transform:uppercase;}
+.field input,.field select,.field textarea{background:var(--bg-alt);border:1px solid var(--border-strong);border-radius:var(--radius-sm);padding:12px 14px;color:var(--text);font-family:var(--font-body);font-size:.95rem;}
+.field textarea{resize:vertical;min-height:120px;}
+.form-note{font-size:.82rem;color:var(--text-muted);margin-top:14px;}
+.form-success{display:none;margin-top:16px;font-size:.9rem;color:var(--teal);font-family:var(--font-mono);}
+.form-success.show{display:block;}
+.star-rating{display:flex;flex-direction:row-reverse;justify-content:flex-end;gap:8px;}
+.star-rating input{position:absolute;opacity:0;width:1px;height:1px;}
+.star-rating label{cursor:pointer;width:38px;height:38px;border:1px solid var(--border-strong);border-radius:10px;display:flex;align-items:center;justify-content:center;color:var(--text-muted);}
+.star-rating input:checked~label,.star-rating label:hover,.star-rating label:hover~label{border-color:var(--amber);color:var(--amber);background:var(--amber-soft);}
+.info-card{border:1px solid var(--border);border-radius:var(--radius);padding:28px;background:var(--card);margin-bottom:20px;}
+.info-row{display:flex;gap:14px;margin-bottom:20px;}
+.info-row .label{font-family:var(--font-mono);font-size:.72rem;color:var(--text-muted);text-transform:uppercase;display:block;margin-bottom:4px;}
+@media(max-width:900px){.contact-grid{grid-template-columns:1fr;}.form-row{grid-template-columns:1fr;}}
+.final-cta{text-align:center;padding:90px 24px;max-width:760px;margin:0 auto;}
+footer{border-top:1px solid var(--border);padding:56px 0 28px;}
+.footer-top{display:flex;justify-content:space-between;gap:40px;flex-wrap:wrap;padding-bottom:36px;}
+.footer-cols{display:flex;gap:64px;flex-wrap:wrap;}
+.footer-col h4{font-size:.8rem;color:var(--text-muted);text-transform:uppercase;font-family:var(--font-mono);margin-bottom:16px;}
+.footer-col li{margin-bottom:10px;}
+.footer-bottom{border-top:1px solid var(--border);padding-top:24px;display:flex;justify-content:space-between;flex-wrap:wrap;gap:16px;font-size:.82rem;color:var(--text-muted);}
+.back-to-top{position:fixed;right:22px;bottom:22px;width:46px;height:46px;border-radius:50%;background:var(--amber);color:#1A1300;display:flex;align-items:center;justify-content:center;border:none;cursor:pointer;opacity:0;pointer-events:none;transition:opacity .3s;z-index:90;}
+.back-to-top.show{opacity:1;pointer-events:auto;}
+.whatsapp-float{position:fixed;left:22px;bottom:22px;width:52px;height:52px;border-radius:50%;background:#25D366;color:#0B0D12;display:flex;align-items:center;justify-content:center;z-index:90;}
+@media(prefers-reduced-motion:reduce){.reveal{opacity:1;transform:none;}html{scroll-behavior:auto;}}
 </style>
 </head>
 <body>
-<header><div class="container nav-wrap">
-<a href="#home" style="color:var(--text);text-decoration:none;font-family:var(--font-mono);">Rahul Pandey</a>
-<nav class="primary-nav"><a href="#about">About</a><a href="#skills">Skills</a><a href="#services">Services</a><a href="#projects">Projects</a><a href="#contact">Contact</a><a href="#feedback">Feedback</a></nav>
+<a href="#main" class="skip-link">Skip to main content</a>
+<header id="site-header"><div class="nav-wrap">
+<a href="#home" class="logo">&lt;<span class="tag">RP</span>/&gt;<span style="color:var(--text-muted);margin-left:6px;">Rahul Pandey</span></a>
+<nav class="primary-nav" id="primary-nav"><a href="#home">Home</a><a href="#about">About</a><a href="#skills">Skills</a><a href="#services">Services</a><a href="#projects">Projects</a><a href="#why">Why Me</a><a href="#process">Process</a><a href="#faq">FAQ</a><a href="#contact">Contact</a><a href="#feedback">Feedback</a></nav>
+<div class="nav-actions"><a href="#contact" class="btn btn-ghost">Start a Project</a><button class="nav-toggle" id="navToggle" aria-label="Toggle navigation" aria-expanded="false"><svg id="navIcon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg></button></div>
 </div></header>
-<main id="home">
-<section class="hero container">
+<main id="main">
+<section class="hero" id="home"><div class="container hero-grid">
+<div class="reveal in"><span class="hero-status"><span class="dot"></span>Open to new web development projects</span>
 <h1>I build websites that turn visitors into <span class="hl">clients.</span></h1>
-<p>Hi, I'm Rahul Pandey — a web developer who designs and builds fast, modern, conversion-focused websites for businesses, startups, creators and professionals.</p>
-<a href="#contact" class="btn btn-primary">Start a Project</a> <a href="#projects" class="btn btn-ghost">View My Work</a>
-</section>
-<section class="section-pad" id="about"><div class="container"><h2>About Me</h2><p>I'm Rahul Pandey, a web developer based in Vadodara, Gujarat, India, focused on building websites that don't just look good — they work.</p></div></section>
-<section class="section-pad alt-bg" id="skills"><div class="container"><h2>Skills</h2><div class="grid-4">
-<div class="card"><h3>HTML5</h3></div><div class="card"><h3>CSS3</h3></div><div class="card"><h3>JavaScript</h3></div><div class="card"><h3>React</h3></div>
-<div class="card"><h3>Node.js</h3></div><div class="card"><h3>Python</h3></div><div class="card"><h3>MongoDB</h3></div><div class="card"><h3>Git &amp; GitHub</h3></div>
-</div></div></section>
-<section class="section-pad" id="services"><div class="container"><h2>Services</h2><div class="grid-3">
-<div class="card"><h3>Business Websites</h3><p>Professional websites that establish credibility.</p></div>
-<div class="card"><h3>Landing Pages</h3><p>High-converting single pages.</p></div>
-<div class="card"><h3>Portfolio Websites</h3><p>Personal or creative portfolios.</p></div>
-<div class="card"><h3>E-commerce Websites</h3><p>Online stores built to sell.</p></div>
-<div class="card"><h3>AI-Powered Websites</h3><p>Chatbots, smart search, AI tools.</p></div>
-<div class="card"><h3>Website Redesign</h3><p>Modern upgrades for outdated sites.</p></div>
-</div></div></section>
-<section class="section-pad alt-bg" id="projects"><div class="container"><h2>Projects</h2><div class="grid-3">
-<div class="card"><h3>Nova — Business Website (Concept)</h3></div>
-<div class="card"><h3>Pulse — SaaS Landing Page (Concept)</h3></div>
-<div class="card"><h3>Artisan — Portfolio Site (Concept)</h3></div>
-</div></div></section>
-<section class="section-pad" id="contact"><div class="container"><h2>Let's build something great</h2>
-<p>Email: rahulhttpos@gmail.com<br>WhatsApp: <a href="https://wa.me/916205079457" style="color:var(--teal);">+91 62050 79457</a><br>Location: Vadodara, Gujarat, India</p>
+<p class="hero-sub">Hi, I'm Rahul Pandey — a web developer who designs and builds fast, modern, conversion-focused websites for businesses, startups, creators and professionals.</p>
+<div class="hero-ctas"><a href="#contact" class="btn btn-primary">Start a Project</a><a href="#projects" class="btn btn-ghost">View My Work</a></div>
+<div class="stack-chips"><span class="chip">HTML</span><span class="chip">CSS</span><span class="chip">JavaScript</span><span class="chip">React</span><span class="chip">Node.js</span><span class="chip">Python</span><span class="chip">MongoDB</span><span class="chip">AI Tools</span></div></div>
+<div class="reveal in"><div class="terminal"><div class="terminal-bar"><span style="background:#FF5F57"></span><span style="background:#FEBC2E"></span><span style="background:#28C840"></span><span class="terminal-title">rahul@webdev — zsh</span></div><div class="terminal-body" id="typedTerminal"></div></div></div>
 </div></section>
-<section class="section-pad alt-bg" id="feedback"><div class="container" style="text-align:center;"><h2>Share your feedback</h2><p>I'd love to hear your thoughts.</p></div></section>
+<section class="section-pad" id="about"><div class="container about-grid">
+<div class="reveal"><div class="avatar-card"><div class="avatar">RP</div><h3>Rahul Pandey</h3><p style="color:var(--text-muted);margin-bottom:18px;">Web Developer</p><span class="eyebrow" style="margin:0;">Available for freelance work</span></div></div>
+<div class="reveal"><span class="eyebrow">01 — about me</span><h2>The developer behind the code</h2>
+<p style="margin:22px 0 18px;">I'm Rahul Pandey, a web developer focused on building websites that don't just look good — they work. My approach blends clean design with solid, maintainable code, so every site I build is fast, responsive, and built to grow with your business.</p>
+<p style="margin-bottom:18px;">I take time to understand what you're actually trying to achieve before writing a single line of code, and I'm increasingly integrating AI-powered features into modern websites to help clients stand out.</p>
+<div class="facts">
+<div class="fact"><span class="label">Based in</span><span>Vadodara, Gujarat, India</span></div>
+<div class="fact"><span class="label">Currently focused on</span><span>React, Node.js &amp; AI-powered websites</span></div>
+<div class="fact"><span class="label">Availability</span><span>Freelance / Contract</span></div>
+<div class="fact"><span class="label">Typical response time</span><span>Within 24 hours</span></div>
+</div></div>
+</div></section>
+<section class="section-pad alt-bg" id="skills"><div class="container">
+<div class="section-head reveal"><span class="eyebrow">02 — skills</span><h2>Tools I use to build your website</h2><p>A modern, practical stack covering front-end, back-end, workflow and AI.</p></div>
+<div class="skill-group reveal"><h3>Front-end</h3><div class="grid-4">
+<div class="card"><h4>HTML5</h4><p style="font-size:.9rem;color:var(--text-muted);">Semantic, accessible markup.</p></div>
+<div class="card"><h4>CSS3</h4><p style="font-size:.9rem;color:var(--text-muted);">Responsive layouts and design systems.</p></div>
+<div class="card"><h4>JavaScript</h4><p style="font-size:.9rem;color:var(--text-muted);">Interactive front-ends with modern ES6+.</p></div>
+<div class="card"><h4>React</h4><p style="font-size:.9rem;color:var(--text-muted);">Component-based interactive apps.</p></div>
+</div></div>
+<div class="skill-group reveal"><h3>Back-end &amp; data</h3><div class="grid-4">
+<div class="card"><h4>Node.js</h4><p style="font-size:.9rem;color:var(--text-muted);">Scalable server-side APIs.</p></div>
+<div class="card"><h4>Python</h4><p style="font-size:.9rem;color:var(--text-muted);">Automation and AI integrations.</p></div>
+<div class="card"><h4>MongoDB</h4><p style="font-size:.9rem;color:var(--text-muted);">Flexible databases.</p></div>
+<div class="card"><h4>Git &amp; GitHub</h4><p style="font-size:.9rem;color:var(--text-muted);">Clean version control.</p></div>
+</div></div>
+<div class="skill-group reveal"><h3>Workflow &amp; AI</h3><div class="grid-4">
+<div class="card"><h4>Responsive Design</h4><p style="font-size:.9rem;color:var(--text-muted);">Mobile-first builds.</p></div>
+<div class="card"><h4>AI-Assisted Development</h4><p style="font-size:.9rem;color:var(--text-muted);">Build faster without cutting quality.</p></div>
+<div class="card"><h4>AI Integrations</h4><p style="font-size:.9rem;color:var(--text-muted);">Chatbots and smart search.</p></div>
+<div class="card"><h4>SEO Foundations</h4><p style="font-size:.9rem;color:var(--text-muted);">Semantic structure from the start.</p></div>
+</div></div></div></section>
+<section class="section-pad" id="services"><div class="container">
+<div class="section-head reveal"><span class="eyebrow">03 — services</span><h2>What I can build for you</h2><p>From a single landing page to a full e-commerce store.</p></div>
+<div class="grid-3">
+<article class="card service-card reveal"><h3>Business Websites</h3><p>Professional websites that establish credibility and turn visitors into leads.</p><ul><li>Custom design aligned to your brand</li><li>Mobile-first, fully responsive build</li><li>Contact &amp; lead-capture forms</li><li>SEO-friendly structure</li></ul><a href="#contact" class="service-link">Get started →</a></article>
+<article class="card service-card reveal"><h3>Landing Pages</h3><p>High-converting single pages built for one goal: getting the click.</p><ul><li>Conversion-focused layout</li><li>Fast load times</li><li>Clear, prominent calls to action</li><li>Built for campaigns &amp; launches</li></ul><a href="#contact" class="service-link">Get started →</a></article>
+<article class="card service-card reveal"><h3>Portfolio Websites</h3><p>Personal or creative portfolios that show your work at its best.</p><ul><li>Project &amp; case-study layouts</li><li>Gallery &amp; media support</li><li>Personal branding touches</li><li>Built-in contact integration</li></ul><a href="#contact" class="service-link">Get started →</a></article>
+<article class="card service-card reveal"><h3>E-commerce Websites</h3><p>Online stores built to showcase products and process orders smoothly.</p><ul><li>Product catalog &amp; cart</li><li>Secure checkout integration</li><li>Inventory-friendly structure</li><li>Smooth mobile shopping experience</li></ul><a href="#contact" class="service-link">Get started →</a></article>
+<article class="card service-card reveal"><h3>AI-Powered Websites</h3><p>Websites enhanced with AI features like chatbots, smart search, or content tools.</p><ul><li>AI chatbot / assistant integration</li><li>Smart content &amp; recommendations</li><li>Workflow automation</li><li>Custom AI tool integration</li></ul><a href="#contact" class="service-link">Get started →</a></article>
+<article class="card service-card reveal"><h3>Website Redesign</h3><p>Give an outdated website a modern, faster, better-converting upgrade.</p><ul><li>UX/UI audit</li><li>Modern visual redesign</li><li>Performance optimization</li><li>Content restructuring</li></ul><a href="#contact" class="service-link">Get started →</a></article>
+</div></div></section>
+<section class="section-pad alt-bg" id="projects"><div class="container">
+<div class="section-head reveal"><span class="eyebrow">04 — projects</span><h2>Selected work</h2><p>Concept projects showing how I approach design, structure and code.</p></div>
+<div class="grid-3">
+<article class="card project-card reveal" style="padding:0;"><div class="project-thumb p1"><span class="badge-concept">Concept Project</span>N</div><div class="project-body"><h3>Nova — Business Website</h3><p style="color:var(--text-muted);font-size:.92rem;margin:8px 0 16px;">A clean, conversion-focused concept for a local service business.</p><span class="tag">HTML</span><span class="tag">CSS</span><span class="tag">JavaScript</span></div></article>
+<article class="card project-card reveal" style="padding:0;"><div class="project-thumb p2"><span class="badge-concept">Concept Project</span>P</div><div class="project-body"><h3>Pulse — SaaS Landing Page</h3><p style="color:var(--text-muted);font-size:.92rem;margin:8px 0 16px;">A high-conversion landing page concept for a SaaS product.</p><span class="tag">React</span><span class="tag">CSS</span></div></article>
+<article class="card project-card reveal" style="padding:0;"><div class="project-thumb p3"><span class="badge-concept">Concept Project</span>A</div><div class="project-body"><h3>Artisan — Portfolio Site</h3><p style="color:var(--text-muted);font-size:.92rem;margin:8px 0 16px;">A creative portfolio concept with strong personal branding.</p><span class="tag">React</span><span class="tag">Node.js</span><span class="tag">MongoDB</span></div></article>
+</div></div></section>
+<section class="section-pad" id="why"><div class="container">
+<div class="section-head reveal"><span class="eyebrow">05 — why choose me</span><h2>Why work with me</h2><p>What you get when you hire a developer directly.</p></div>
+<div class="why-grid">
+<div class="card reveal"><h3 style="font-size:1.05rem;margin-bottom:10px;">Clean, Maintainable Code</h3><p style="font-size:.9rem;color:var(--text-muted);">Readable, well-structured code that's easy to update later.</p></div>
+<div class="card reveal"><h3 style="font-size:1.05rem;margin-bottom:10px;">Modern Tech Stack</h3><p style="font-size:.9rem;color:var(--text-muted);">React, Node.js and current tooling.</p></div>
+<div class="card reveal"><h3 style="font-size:1.05rem;margin-bottom:10px;">Direct Communication</h3><p style="font-size:.9rem;color:var(--text-muted);">You work directly with the person building your site.</p></div>
+<div class="card reveal"><h3 style="font-size:1.05rem;margin-bottom:10px;">Performance First</h3><p style="font-size:.9rem;color:var(--text-muted);">Sites built to load fast and score well.</p></div>
+<div class="card reveal"><h3 style="font-size:1.05rem;margin-bottom:10px;">SEO-Ready Foundations</h3><p style="font-size:.9rem;color:var(--text-muted);">Semantic structure from day one.</p></div>
+<div class="card reveal"><h3 style="font-size:1.05rem;margin-bottom:10px;">Support After Launch</h3><p style="font-size:.9rem;color:var(--text-muted);">Updates and support available afterward.</p></div>
+</div></div></section>
+<section class="section-pad alt-bg" id="process"><div class="container">
+<div class="section-head reveal"><span class="eyebrow">06 — my process</span><h2>How a project comes together</h2><p>A clear, step-by-step process.</p></div>
+<div class="process-item reveal"><div class="process-num">01</div><div><h3>Discovery &amp; Requirements</h3><p style="color:var(--text-muted);">Understand your business, goals and audience.</p></div></div>
+<div class="process-item reveal"><div class="process-num">02</div><div><h3>Planning &amp; Wireframing</h3><p style="color:var(--text-muted);">Map out structure, content and user flow.</p></div></div>
+<div class="process-item reveal"><div class="process-num">03</div><div><h3>Design</h3><p style="color:var(--text-muted);">Craft a visual direction matching your brand.</p></div></div>
+<div class="process-item reveal"><div class="process-num">04</div><div><h3>Development</h3><p style="color:var(--text-muted);">Build with clean, modern code.</p></div></div>
+<div class="process-item reveal"><div class="process-num">05</div><div><h3>Testing &amp; QA</h3><p style="color:var(--text-muted);">Check functionality and responsiveness.</p></div></div>
+<div class="process-item reveal"><div class="process-num">06</div><div><h3>Launch &amp; Support</h3><p style="color:var(--text-muted);">Deploy and hand over what you need.</p></div></div>
+</div></section>
+<section class="section-pad" id="faq"><div class="container">
+<div class="section-head reveal"><span class="eyebrow">07 — faq</span><h2>Frequently asked questions</h2></div>
+<div class="faq-item" data-open="false"><button class="faq-q">What kind of websites do you build?<span class="plus"></span></button><div class="faq-a-wrap"><div class="faq-a-inner"><p class="faq-a">Business websites, landing pages, portfolios, e-commerce, AI-powered websites, and redesigns.</p></div></div></div>
+<div class="faq-item" data-open="false"><button class="faq-q">How much does a website cost?<span class="plus"></span></button><div class="faq-a-wrap"><div class="faq-a-inner"><p class="faq-a">Pricing depends on scope. Get in touch for a custom quote.</p></div></div></div>
+<div class="faq-item" data-open="false"><button class="faq-q">How long does a project take?<span class="plus"></span></button><div class="faq-a-wrap"><div class="faq-a-inner"><p class="faq-a">Depends on scope; I'll give a realistic timeline after discovery.</p></div></div></div>
+<div class="faq-item" data-open="false"><button class="faq-q">Do you offer revisions?<span class="plus"></span></button><div class="faq-a-wrap"><div class="faq-a-inner"><p class="faq-a">Yes, revision rounds are built into design and development.</p></div></div></div>
+<div class="faq-item" data-open="false"><button class="faq-q">Will my website work on mobile?<span class="plus"></span></button><div class="faq-a-wrap"><div class="faq-a-inner"><p class="faq-a">Yes, every site is mobile-first and tested across devices.</p></div></div></div>
+<div class="faq-item" data-open="false"><button class="faq-q">Do you offer support after launch?<span class="plus"></span></button><div class="faq-a-wrap"><div class="faq-a-inner"><p class="faq-a">Yes, ongoing maintenance and support are available.</p></div></div></div>
+<div class="faq-item" data-open="false"><button class="faq-q">Can you integrate AI features?<span class="plus"></span></button><div class="faq-a-wrap"><div class="faq-a-inner"><p class="faq-a">Yes — chatbots, smart search, and other AI features can be integrated.</p></div></div></div>
+</div></section>
+<section class="section-pad alt-bg" id="contact"><div class="container">
+<div class="section-head reveal"><span class="eyebrow">08 — contact</span><h2>Let's build something great</h2><p>Tell me about your project and I'll get back to you shortly.</p></div>
+<div class="contact-grid">
+<form class="form-card reveal" id="contactForm" novalidate>
+<div class="form-row"><div class="field"><label for="name">Name</label><input type="text" id="name" name="name" required></div><div class="field"><label for="email">Email</label><input type="email" id="email" name="email" required></div></div>
+<div class="form-row"><div class="field"><label for="projectType">Project type</label><select id="projectType" name="projectType" required><option value="" disabled selected>Select a service</option><option>Business Website</option><option>Landing Page</option><option>Portfolio Website</option><option>E-commerce Website</option><option>AI-Powered Website</option><option>Website Redesign</option><option>Other</option></select></div><div class="field"><label for="budget">Budget (optional)</label><select id="budget" name="budget"><option value="" selected>Prefer not to say</option><option>Under $300</option><option>$300 – $600</option><option>$600 – $1,500</option><option>$1,500+</option></select></div></div>
+<div class="field"><label for="message">Project details</label><textarea id="message" name="message" required></textarea></div>
+<button type="submit" class="btn btn-primary btn-block">Send Message</button>
+<p class="form-note">Submitting opens your email client. I typically reply within 24–48 hours.</p>
+<p class="form-success" id="formSuccess" role="status">✓ Your email client should now be open.</p>
+</form>
+<div class="reveal">
+<div class="info-card"><div class="info-row"><div class="icon-badge">@</div><div><span class="label">Email</span><span>rahulhttpos@gmail.com</span></div></div>
+<div class="info-row"><div class="icon-badge">#</div><div><span class="label">Phone</span><span>+91 62050 79457, +91 95232 15171</span></div></div>
+<div class="info-row"><div class="icon-badge">W</div><div><span class="label">WhatsApp (work enquiries)</span><span><a href="https://wa.me/916205079457?text=Hi%20Rahul%2C%20I%27d%20like%20to%20talk%20about%20a%20website%20project." target="_blank" rel="noopener noreferrer" style="color:var(--teal);text-decoration:underline;">+91 62050 79457</a></span></div></div>
+<div class="info-row"><div class="icon-badge">L</div><div><span class="label">Location</span><span>Vadodara, Gujarat, India</span></div></div>
+<div class="info-row"><div class="icon-badge">A</div><div><span class="label">Availability</span><span>Open to freelance &amp; contract work</span></div></div></div>
+<p class="form-note">For work-related queries, message me directly on WhatsApp for the fastest response.</p>
+</div></div></div></section>
+<section class="section-pad" id="feedback"><div class="container">
+<div class="section-head reveal" style="margin:0 auto;text-align:center;"><span class="eyebrow" style="justify-content:center;">09 — feedback</span><h2>Share your feedback</h2><p style="margin:0 auto;">I'd genuinely like to hear your thoughts — good or critical.</p></div>
+<form class="form-card reveal" id="feedbackForm" style="max-width:640px;margin:0 auto;" novalidate>
+<div class="form-row"><div class="field"><label for="fbName">Name (optional)</label><input type="text" id="fbName" name="fbName"></div><div class="field"><label for="fbEmail">Email (optional)</label><input type="email" id="fbEmail" name="fbEmail"></div></div>
+<div class="field"><label id="fbRatingLabel">How would you rate your experience?</label><div class="star-rating" role="radiogroup" aria-labelledby="fbRatingLabel">
+<input type="radio" id="star5" name="rating" value="5"><label for="star5">5</label>
+<input type="radio" id="star4" name="rating" value="4"><label for="star4">4</label>
+<input type="radio" id="star3" name="rating" value="3"><label for="star3">3</label>
+<input type="radio" id="star2" name="rating" value="2"><label for="star2">2</label>
+<input type="radio" id="star1" name="rating" value="1"><label for="star1">1</label>
+</div></div>
+<div class="field"><label for="fbMessage">Your feedback</label><textarea id="fbMessage" name="fbMessage" required></textarea></div>
+<button type="submit" class="btn btn-primary btn-block">Send Feedback</button>
+<p class="form-note">Submitting opens your email client with your feedback.</p>
+<p class="form-success" id="feedbackSuccess" role="status">✓ Your email client should now be open.</p>
+</form></div></section>
+<section><div class="final-cta reveal"><h2>Have a project in mind?</h2><p>Let's talk about how to build it right.</p><a href="#contact" class="btn btn-primary">Get in Touch</a></div></section>
 </main>
-<footer><div class="container"><p>&copy; <span id="year"></span> Rahul Pandey. All rights reserved.</p></div></footer>
-<a href="https://wa.me/916205079457" class="whatsapp-float" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp">W</a>
-<script>document.getElementById('year').textContent = new Date().getFullYear();</script>
+<footer><div class="container">
+<div class="footer-top"><div><div class="logo">&lt;<span class="tag">RP</span>/&gt;<span style="color:var(--text-muted);margin-left:6px;">Rahul Pandey</span></div><p style="color:var(--text-muted);font-size:.9rem;max-width:280px;margin-top:12px;">Building fast, modern websites for businesses, startups, creators and professionals.</p></div>
+<div class="footer-cols">
+<div class="footer-col"><h4>Navigate</h4><ul><li><a href="#home">Home</a></li><li><a href="#about">About</a></li><li><a href="#services">Services</a></li><li><a href="#projects">Projects</a></li><li><a href="#contact">Contact</a></li><li><a href="#feedback">Feedback</a></li></ul></div>
+<div class="footer-col"><h4>Services</h4><ul><li><a href="#services">Business Websites</a></li><li><a href="#services">Landing Pages</a></li><li><a href="#services">E-commerce Websites</a></li><li><a href="#services">AI-Powered Websites</a></li></ul></div>
+<div class="footer-col"><h4>Connect</h4><ul><li><a href="#">GitHub</a></li><li><a href="https://wa.me/916205079457" target="_blank" rel="noopener noreferrer">WhatsApp (work enquiries)</a></li><li><a href="mailto:rahulhttpos@gmail.com">Email</a></li></ul></div>
+</div></div>
+<div class="footer-bottom"><span>© <span id="year"></span> Rahul Pandey. All rights reserved.</span><span>Designed &amp; built by Rahul Pandey</span></div>
+</div></footer>
+<a href="https://wa.me/916205079457?text=Hi%20Rahul%2C%20I%27d%20like%20to%20talk%20about%20a%20website%20project." class="whatsapp-float" target="_blank" rel="noopener noreferrer" aria-label="Message Rahul on WhatsApp">W</a>
+<button class="back-to-top" id="backToTop" aria-label="Back to top">↑</button>
+<script>
+(function(){
+"use strict";
+document.getElementById('year').textContent = new Date().getFullYear();
+var header = document.getElementById('site-header');
+var backToTop = document.getElementById('backToTop');
+function onScroll(){var y=window.scrollY;header.classList.toggle('scrolled',y>10);backToTop.classList.toggle('show',y>500);}
+document.addEventListener('scroll',onScroll,{passive:true});
+onScroll();
+backToTop.addEventListener('click',function(){window.scrollTo({top:0,behavior:'smooth'});});
+var navToggle=document.getElementById('navToggle');
+var nav=document.getElementById('primary-nav');
+navToggle.addEventListener('click',function(){var open=nav.classList.toggle('open');navToggle.setAttribute('aria-expanded',open?'true':'false');});
+nav.querySelectorAll('a').forEach(function(a){a.addEventListener('click',function(){nav.classList.remove('open');navToggle.setAttribute('aria-expanded','false');});});
+var revealEls=document.querySelectorAll('.reveal');
+if('IntersectionObserver' in window){
+var io=new IntersectionObserver(function(entries){entries.forEach(function(entry){if(entry.isIntersecting){entry.target.classList.add('in');io.unobserve(entry.target);}});},{threshold:.12});
+revealEls.forEach(function(el){io.observe(el);});
+}else{revealEls.forEach(function(el){el.classList.add('in');});}
+document.querySelectorAll('.faq-item').forEach(function(item){
+var btn=item.querySelector('.faq-q');
+btn.addEventListener('click',function(){
+var isOpen=item.getAttribute('data-open')==='true';
+document.querySelectorAll('.faq-item').forEach(function(other){if(other!==item){other.setAttribute('data-open','false');}});
+item.setAttribute('data-open',isOpen?'false':'true');
+});
+});
+var termEl=document.getElementById('typedTerminal');
+if(termEl){
+var lines=[{type:'cmd',text:'whoami'},{type:'out',html:'Rahul Pandey — Web Developer'},{type:'blank'},{type:'cmd',text:'ls stack/'},{type:'out',html:'<span class="key">HTML CSS JavaScript React Node.js Python MongoDB AI Tools</span>'},{type:'blank'},{type:'cmd',text:'cat mission.txt'},{type:'out',html:'<span class="str">"Build websites that look great and actually grow your business."</span>'}];
+var out='';var li=0;
+function typeLine(){
+if(li>=lines.length){termEl.innerHTML=out+'<span class="prompt">rahul@webdev</span> ~ % <span class="caret"></span>';return;}
+var l=lines[li];
+if(l.type==='blank'){out+='\n';li++;termEl.innerHTML=out;setTimeout(typeLine,120);return;}
+if(l.type==='out'){out+=l.html+'\n';termEl.innerHTML=out;li++;setTimeout(typeLine,320);return;}
+var prefix='<span class="prompt">rahul@webdev</span> ~ % ';
+var chars=l.text.split('');var ci=0;var current='';
+function typeChar(){
+if(ci<chars.length){current+=chars[ci];termEl.innerHTML=out+prefix+current+'<span class="caret"></span>';ci++;setTimeout(typeChar,34);}
+else{out+=prefix+current+'\n';li++;setTimeout(typeLine,200);}
+}
+typeChar();
+}
+typeLine();
+}
+var form=document.getElementById('contactForm');
+var successMsg=document.getElementById('formSuccess');
+form.addEventListener('submit',function(e){
+e.preventDefault();
+if(!form.checkValidity()){form.reportValidity();return;}
+var name=form.name.value.trim();var email=form.email.value.trim();var projectType=form.projectType.value;var budget=form.budget.value;var message=form.message.value.trim();
+var subject='New project inquiry from '+name+' — '+projectType;
+var body='Name: '+name+'\nEmail: '+email+'\nProject type: '+projectType+'\n'+(budget?('Budget: '+budget+'\n'):'')+'\nMessage:\n'+message;
+var mailto='mailto:rahulhttpos@gmail.com?subject='+encodeURIComponent(subject)+'&body='+encodeURIComponent(body);
+window.location.href=mailto;
+successMsg.classList.add('show');
+});
+var fbForm=document.getElementById('feedbackForm');
+var fbSuccessMsg=document.getElementById('feedbackSuccess');
+fbForm.addEventListener('submit',function(e){
+e.preventDefault();
+if(!fbForm.checkValidity()){fbForm.reportValidity();return;}
+var fbName=fbForm.fbName.value.trim()||'Anonymous';var fbEmail=fbForm.fbEmail.value.trim();
+var ratingInput=fbForm.querySelector('input[name="rating"]:checked');
+var rating=ratingInput?ratingInput.value+' / 5':'Not rated';
+var fbMessage=fbForm.fbMessage.value.trim();
+var fbSubject='Website feedback from '+fbName;
+var fbBody='Name: '+fbName+'\n'+(fbEmail?('Email: '+fbEmail+'\n'):'')+'Rating: '+rating+'\n\nFeedback:\n'+fbMessage;
+var fbMailto='mailto:rahulhttpos@gmail.com?subject='+encodeURIComponent(fbSubject)+'&body='+encodeURIComponent(fbBody);
+window.location.href=fbMailto;
+fbSuccessMsg.classList.add('show');
+});
+})();
+</script>
 </body>
 </html>
