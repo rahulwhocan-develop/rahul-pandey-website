@@ -670,6 +670,15 @@
     font-family:var(--font-mono);
   }
   .form-success.show{display:block;}
+  .form-error{
+    display:none;
+    margin-top:16px;
+    font-size:.9rem;
+    color:#FF8A8A;
+    font-family:var(--font-mono);
+  }
+  .form-error.show{display:block;}
+  .btn[disabled]{opacity:.6; cursor:not-allowed; transform:none !important;}
 
   /* Feedback section */
   .feedback-card{
@@ -1294,6 +1303,10 @@
 
       <div class="contact-grid">
         <form class="form-card reveal" id="contactForm" novalidate>
+          <div style="position:absolute; left:-9999px; width:1px; height:1px; overflow:hidden;" aria-hidden="true">
+            <label for="contact-website">Leave this field empty</label>
+            <input type="text" id="contact-website" name="website" tabindex="-1" autocomplete="off">
+          </div>
           <div class="form-row">
             <div class="field">
               <label for="name">Name</label>
@@ -1338,7 +1351,8 @@
 
           <button type="submit" class="btn btn-primary btn-block">Send Message</button>
           <p class="form-note">Submitting opens your email client with this message addressed to me. I typically reply within 24–48 hours. Prefer something faster? <a href="https://wa.me/916205079457?text=Hi%20Rahul%2C%20I%27d%20like%20to%20talk%20about%20a%20website%20project." target="_blank" rel="noopener noreferrer" style="color:var(--teal); text-decoration:underline;">Message me on WhatsApp</a> instead.</p>
-          <p class="form-success" id="formSuccess" role="status">✓ Your email client should now be open with your message ready to send.</p>
+          <p class="form-success" id="formSuccess" role="status">✓ Thanks — your message has been sent. I'll get back to you within 24–48 hours.</p>
+          <p class="form-error" id="formError" role="alert"></p>
         </form>
 
         <div class="reveal">
@@ -1380,6 +1394,10 @@
       </div>
 
       <form class="form-card feedback-card reveal" id="feedbackForm" novalidate>
+        <div style="position:absolute; left:-9999px; width:1px; height:1px; overflow:hidden;" aria-hidden="true">
+          <label for="feedback-website">Leave this field empty</label>
+          <input type="text" id="feedback-website" name="website" tabindex="-1" autocomplete="off">
+        </div>
         <div class="form-row">
           <div class="field">
             <label for="fbName">Name (optional)</label>
@@ -1409,7 +1427,8 @@
 
         <button type="submit" class="btn btn-primary btn-block">Send Feedback</button>
         <p class="form-note">Submitting opens your email client with your feedback addressed to me. Thank you for taking the time.</p>
-        <p class="form-success" id="feedbackSuccess" role="status">✓ Your email client should now be open with your feedback ready to send.</p>
+        <p class="form-success" id="feedbackSuccess" role="status">✓ Thanks for the feedback — I really appreciate it.</p>
+        <p class="form-error" id="feedbackError" role="alert"></p>
       </form>
     </div>
   </section>
@@ -1628,65 +1647,117 @@
     typeLine();
   }
 
-  // Contact form -> mailto submission
+  // Contact form -> POST to /api/contact (server-side email via Resend)
   var form = document.getElementById('contactForm');
   var successMsg = document.getElementById('formSuccess');
+  var errorMsg = document.getElementById('formError');
+  var formLoadedAt = Date.now();
+
   form.addEventListener('submit', function(e){
     e.preventDefault();
     if(!form.checkValidity()){
       form.reportValidity();
       return;
     }
-    var name = form.name.value.trim();
-    var email = form.email.value.trim();
-    var projectType = form.projectType.value;
-    var budget = form.budget.value;
-    var message = form.message.value.trim();
 
-    var subject = 'New project inquiry from ' + name + ' — ' + projectType;
-    var body =
-      'Name: ' + name + '\n' +
-      'Email: ' + email + '\n' +
-      'Project type: ' + projectType + '\n' +
-      (budget ? ('Budget: ' + budget + '\n') : '') +
-      '\nMessage:\n' + message;
+    successMsg.classList.remove('show');
+    errorMsg.classList.remove('show');
 
-    var mailto = 'mailto:rahulhttpos@gmail.com' +
-      '?subject=' + encodeURIComponent(subject) +
-      '&body=' + encodeURIComponent(body);
+    var submitBtn = form.querySelector('button[type="submit"]');
+    var originalBtnText = submitBtn.textContent;
+    submitBtn.disabled = true;
+    submitBtn.textContent = 'Sending…';
 
-    window.location.href = mailto;
-    successMsg.classList.add('show');
+    var payload = {
+      name: form.name.value.trim(),
+      email: form.email.value.trim(),
+      projectType: form.projectType.value,
+      budget: form.budget.value,
+      message: form.message.value.trim(),
+      website: form.website.value,
+      formStartedAt: formLoadedAt
+    };
+
+    fetch('/api/contact', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(payload)
+    })
+      .then(function(res){ return res.json().then(function(data){ return { status: res.status, data: data }; }); })
+      .then(function(result){
+        if(result.status === 200 && result.data && result.data.ok){
+          successMsg.classList.add('show');
+          form.reset();
+        } else {
+          errorMsg.textContent = (result.data && result.data.error) || "Something went wrong. Please try WhatsApp instead.";
+          errorMsg.classList.add('show');
+        }
+      })
+      .catch(function(){
+        errorMsg.textContent = "Couldn't reach the server. Please check your connection or try WhatsApp instead.";
+        errorMsg.classList.add('show');
+      })
+      .finally(function(){
+        submitBtn.disabled = false;
+        submitBtn.textContent = originalBtnText;
+      });
   });
 
-  // Feedback form -> mailto submission
+  // Feedback form -> POST to /api/feedback (server-side email via Resend)
   var fbForm = document.getElementById('feedbackForm');
   var fbSuccessMsg = document.getElementById('feedbackSuccess');
+  var fbErrorMsg = document.getElementById('feedbackError');
+  var fbLoadedAt = Date.now();
+
   fbForm.addEventListener('submit', function(e){
     e.preventDefault();
     if(!fbForm.checkValidity()){
       fbForm.reportValidity();
       return;
     }
-    var fbName = fbForm.fbName.value.trim() || 'Anonymous';
-    var fbEmail = fbForm.fbEmail.value.trim();
+
+    fbSuccessMsg.classList.remove('show');
+    fbErrorMsg.classList.remove('show');
+
+    var submitBtn = fbForm.querySelector('button[type="submit"]');
+    var originalBtnText = submitBtn.textContent;
+    submitBtn.disabled = true;
+    submitBtn.textContent = 'Sending…';
+
     var ratingInput = fbForm.querySelector('input[name="rating"]:checked');
-    var rating = ratingInput ? ratingInput.value + ' / 5' : 'Not rated';
-    var fbMessage = fbForm.fbMessage.value.trim();
 
-    var fbSubject = 'Website feedback from ' + fbName;
-    var fbBody =
-      'Name: ' + fbName + '\n' +
-      (fbEmail ? ('Email: ' + fbEmail + '\n') : '') +
-      'Rating: ' + rating + '\n' +
-      '\nFeedback:\n' + fbMessage;
+    var payload = {
+      fbName: fbForm.fbName.value.trim(),
+      fbEmail: fbForm.fbEmail.value.trim(),
+      rating: ratingInput ? ratingInput.value : '',
+      fbMessage: fbForm.fbMessage.value.trim(),
+      website: fbForm.website.value,
+      formStartedAt: fbLoadedAt
+    };
 
-    var fbMailto = 'mailto:rahulhttpos@gmail.com' +
-      '?subject=' + encodeURIComponent(fbSubject) +
-      '&body=' + encodeURIComponent(fbBody);
-
-    window.location.href = fbMailto;
-    fbSuccessMsg.classList.add('show');
+    fetch('/api/feedback', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(payload)
+    })
+      .then(function(res){ return res.json().then(function(data){ return { status: res.status, data: data }; }); })
+      .then(function(result){
+        if(result.status === 200 && result.data && result.data.ok){
+          fbSuccessMsg.classList.add('show');
+          fbForm.reset();
+        } else {
+          fbErrorMsg.textContent = (result.data && result.data.error) || 'Something went wrong. Please try again shortly.';
+          fbErrorMsg.classList.add('show');
+        }
+      })
+      .catch(function(){
+        fbErrorMsg.textContent = "Couldn't reach the server. Please check your connection and try again.";
+        fbErrorMsg.classList.add('show');
+      })
+      .finally(function(){
+        submitBtn.disabled = false;
+        submitBtn.textContent = originalBtnText;
+      });
   });
 
 })();
