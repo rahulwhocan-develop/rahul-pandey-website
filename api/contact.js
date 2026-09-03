@@ -4,7 +4,7 @@
 // never reaches the browser; it is read from the RESEND_API_KEY environment
 // variable, which must be set in the Vercel project settings.
 
-const TO_EMAIL = 'rahulhttpos@gmail.com';
+const TO_EMAIL = 'jipandey668@gmail.com';
 const FROM_EMAIL = 'Rahul Pandey Website <onboarding@resend.dev>';
 
 const ALLOWED_PROJECT_TYPES = [
